@@ -1,0 +1,33 @@
+{
+  "name": "abc-blog",
+  "version": "1.0.0",
+  "description": "Koa2 + MongoDB 搭建博客系统",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/liuxing/abc-blog.git"
+  },
+  "keywords": [
+    "tutorial",
+    "nodejs",
+    "koa2",
+    "mongodb"
+  ],
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/liuxing/abc-blog/issues"
+  },
+  "homepage": "https://github.com/liuxing/abc-blog#readme",
+  "devDependencies": {
+    "cz-conventional-changelog": "^2.1.0"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
+}
