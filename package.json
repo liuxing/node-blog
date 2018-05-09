@@ -50,5 +50,8 @@
       "eslint --fix",
       "git add"
     ]
+  },
+  "dependencies": {
+    "koa": "^2.5.1"
   }
 }
