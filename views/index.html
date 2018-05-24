@@ -1,13 +1,26 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>{{title}}</title>
-</head>
-<body>
-<h1>{{title}}</h1>
-<p>{{ desc }}</p>
-</body>
-</html>
+{% extends 'views/base.html' %}
+{% block body %}
+<section class="section">
+    <div class="container">
+        <div class="columns">
+            <div class="column is-three-fifths">
+                {% for i in range(0, 10) %}
+                <div class="card">
+                    <div class="card-content">
+                        <div class="content">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris.
+                            <a>@bulmaio</a>.
+                            <a href="#">#css</a>
+                            <a href="#">#responsive</a>
+                            <br>
+                            <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            <div class="column">JavaScript之禅</div>
+        </div>
+    </div>
+</section>
+{% endblock %}

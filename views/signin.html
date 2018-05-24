@@ -1,0 +1,31 @@
+{% extends 'views/base.html' %}
+{% block body %}
+<div class="container">
+    <div class="box sign-box">
+        <form action="/signin" method="POST">
+            <div class="field">
+                <label class="label">用户名</label>
+                <div class="control">
+                    <input class="input" name="name" type="text" autocomplete="off" placeholder="请输入用户名">
+                </div>
+            </div>
+            <div class="field">
+                <label class="label">密码</label>
+                <div class="control">
+                    <!-- 禁止自动填充用户名密码 -->
+                    <input type="password" style="position: absolute;left: 9999999px" />
+                    <input class="input" name="password" type="password" placeholder="请输入密码">
+                </div>
+            </div>
+            <div class="field is-grouped">
+                <div class="control">
+                    <button class="button is-primary">立即登录</button>
+                </div>
+                <div class="control">
+                    <a href="/signup" class="button is-text">还没账号？</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

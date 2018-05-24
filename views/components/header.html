@@ -1,0 +1,35 @@
+<nav id="navbar" class="navbar has-shadow is-spaced">
+    <div class="container">
+        <div class="navbar-brand">
+            <a class="navbar-item" href="#">JS之禅</a>
+            <div class="navbar-burger burger" data-target="navMenu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        <div id="navMenu" class="navbar-menu">
+            <div class="navbar-start">
+                <a class="navbar-item" href="/">主页</a>
+                <a class="navbar-item" href="/about">关于</a>
+            </div>
+            <div class="navbar-end">
+                {% if ctx.session.user %}
+                <div class="navbar-item">
+                    {{ctx.session.user.name}}
+                </div>
+                <div class="navbar-item">
+                    <a href="/signout">退出</a>
+                </div>
+                {% else %}
+                <div class="navbar-item">
+                    <a class="button is-small is-primary" href="/signup">注册</a>
+                </div>
+                <div class="navbar-item">
+                    <a class="button is-small" href="/signin">登录</a>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</nav>
