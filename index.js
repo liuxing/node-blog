@@ -5,8 +5,20 @@ const views = require('koa-views')
 const session = require('koa-session')
 const bodyParser = require('koa-bodyparser')
 const mongoose = require('mongoose')
+const marked = require('marked')
 const router = require('./routes')
 const CONFIG = require('./config/config')
+
+marked.setOptions({
+  renderer: new marked.Renderer(),
+  gfm: true,
+  tables: true,
+  breaks: false,
+  pedantic: false,
+  sanitize: false,
+  smartLists: true,
+  smartypants: false
+})
 
 const app = new Koa()
 
@@ -31,6 +43,7 @@ app.use(views(path.join(__dirname, 'views'), {
 
 app.use(async (ctx, next) => {
   ctx.state.ctx = ctx
+  ctx.state.marked = marked
   await next()
 })
 

@@ -9,13 +9,15 @@
     <meta name="description" content="起于JS而不止于JS">
     <meta name="author" content="Liu Xing">
     <link href="https://cdn.bootcss.com/bulma/0.7.1/css/bulma.min.css" rel="stylesheet">
+    <link href="https://cdn.bootcss.com/github-markdown-css/2.10.0/github-markdown.min.css" rel="stylesheet">
     <link rel="stylesheet" href="/css/app.css">
 </head>
 <body>
-    {% include "./components/header.html" %}
     {% block body %}
     <div>No body</div>
     {% endblock %}
     {# include "./components/footer.html" #}
+    {% block script %}
+    {% endblock %}
 </body>
 </html>

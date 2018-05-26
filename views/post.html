@@ -1,0 +1,14 @@
+{% extends 'views/base.html' %}
+{% block body %}
+{% include "views/components/header.html" %}
+<div class="container margin-top">
+    <div class="columns">
+        <div class="column is-8 is-offset-2">
+            <div class="markdown-body">
+                <h1>{{post.title}}</h1>
+                {{marked(post.content) | safe}}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

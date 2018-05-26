@@ -1,26 +1,31 @@
 {% extends 'views/base.html' %}
 {% block body %}
-<section class="section">
-    <div class="container">
-        <div class="columns">
-            <div class="column is-three-fifths">
-                {% for i in range(0, 10) %}
-                <div class="card">
-                    <div class="card-content">
-                        <div class="content">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris.
-                            <a>@bulmaio</a>.
-                            <a href="#">#css</a>
-                            <a href="#">#responsive</a>
-                            <br>
-                            <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
-                        </div>
-                    </div>
-                </div>
-                {% endfor %}
-            </div>
-            <div class="column">JavaScript之禅</div>
+{% include "views/components/header.html" %}
+<section class="hero is-primary is-bold">
+    <div class="hero-body">
+        <div class="container">
+            <h1 class="title">
+                JS之禅
+            </h1>
+            <h2 class="subtitle">
+                起于JS，而不止于JS
+            </h2>
         </div>
     </div>
 </section>
+<div class="container margin-top">
+    <div class="columns">
+        <div class="column is-8 is-offset-2">
+            {% for post in posts %}
+            <div class="card">
+                <div class="card-content">
+                    <div class="content">
+                        <a href="/posts/{{post._id}}">{{post.title}}</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
 {% endblock %}
