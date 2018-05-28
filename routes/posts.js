@@ -16,6 +16,7 @@ module.exports = {
   },
   async show (ctx, next) {
     const post = await PostModel.findById(ctx.params.id)
+      .populate({ path: 'author', select: 'name' })
     await ctx.render('post', {
       title: post.title,
       post
@@ -24,7 +25,17 @@ module.exports = {
   async edit () {
 
   },
-  async destroy () {
-
+  async destroy (ctx, next) {
+    const post = await PostModel.findById(ctx.params.id)
+    if (!post) {
+      throw new Error('文章不存在')
+    }
+    console.log(post.author, ctx.session.user._id)
+    if (post.author.toString() !== ctx.session.user._id.toString()) {
+      throw new Error('没有权限')
+    }
+    await PostModel.findByIdAndRemove(ctx.params.id)
+    ctx.flash = { success: '删除文章成功' }
+    ctx.redirect('/')
   }
 }

@@ -6,6 +6,13 @@
         <div class="column is-8 is-offset-2">
             <div class="markdown-body">
                 <h1>{{post.title}}</h1>
+                <div>
+                    作者：<a href="/user/{{post.author._id}}">{{post.author.name}}</a>
+                    <div class="is-pulled-right">
+                        <a class="button is-small is-primary" href="/posts/{{post._id}}/edit">编辑</a>
+                        <a class="button is-small is-danger" href="/posts/{{post._id}}/delete">删除</a>
+                    </div>
+                </div>
                 {{marked(post.content) | safe}}
             </div>
         </div>
