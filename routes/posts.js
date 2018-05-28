@@ -1,4 +1,5 @@
 const PostModel = require('../models/post')
+const CommentModel = require('../models/comment')
 
 module.exports = {
   async create (ctx, next) {
@@ -12,16 +13,21 @@ module.exports = {
       author: ctx.session.user._id
     })
     const res = await PostModel.create(post)
-    ctx.body = res
+    ctx.flash = { success: '发表文章成功' }
+    ctx.redirect(`/posts/${res._id}`)
   },
   async show (ctx, next) {
     const post = await PostModel.findById(ctx.params.id)
       .populate({ path: 'author', select: 'name' })
+    const comments = await CommentModel.find({ postId: ctx.params.id })
+      .populate({ path: 'from', select: 'name' })
     await ctx.render('post', {
       title: post.title,
-      post
+      post,
+      comments
     })
   },
+
   async edit (ctx, next) {
     if (ctx.method === 'GET') {
       const post = await PostModel.findById(ctx.params.id)

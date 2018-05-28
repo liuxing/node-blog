@@ -23,6 +23,8 @@ module.exports = (app) => {
   router.get('/posts/:id/edit', isLoginUser, require('./posts').edit)
   router.post('/posts/:id/edit', isLoginUser, require('./posts').edit)
   router.get('/posts/:id/delete', isLoginUser, require('./posts').destroy)
+  router.post('/comments/new', isLoginUser, require('./comments').create)
+  router.get('/comments/:id/delete', isLoginUser, require('./comments').destroy)
 
   app
     .use(router.routes())

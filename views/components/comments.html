@@ -1,0 +1,36 @@
+<form action="/comments/new" method="POST" class="media">
+    <div class="media-content">
+        <div class="field">
+            <input type="hidden" name="postId" value="{{post._id}}">
+            <p class="control">
+                <textarea name="content" class="textarea" placeholder="发表评论…"></textarea>
+            </p>
+        </div>
+        <button class="button is-info is-pulled-right">Submit</button>
+    </div>
+</form>
+{% for comment in comments %}
+<article class="media comment">
+    <figure class="media-left">
+        <p class="image is-24x24">
+            <img src="https://bulma.io/images/placeholders/128x128.png">
+        </p>
+    </figure>
+    <div class="media-content">
+        <div class="content">
+            <p>
+                <strong>{{comment.from.name}}</strong>
+                <small>31m</small>
+                <br>
+                {{marked(comment.content) | safe}}
+            </p>
+        </div>
+        <nav>
+        </nav>
+    </div>
+    <div class="media-right is-invisible">
+        <button id="reply" class="button is-small is-primary">回复</button>
+        <a href="/comments/{{comment._id}}/delete" class="button is-small">删除</a>
+    </div>
+</article>
+{% endfor %}

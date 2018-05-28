@@ -67,3 +67,7 @@
   right: 20px;
   z-index: 999;
 }
+
+.comment:hover .is-invisible{
+  visibility: visible !important;
+}
