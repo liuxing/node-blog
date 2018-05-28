@@ -17,6 +17,7 @@ module.exports = {
         name: user.name,
         email: user.email
       }
+      ctx.flash = { success: '登录成功' }
       ctx.redirect('/')
     } else {
       ctx.body = '用户名或密码错误'
@@ -44,7 +45,8 @@ module.exports = {
   },
 
   signout (ctx, next) {
-    ctx.session = null
+    ctx.session.user = null
+    ctx.flash = { warning: '退出登录' }
     ctx.redirect('/')
   }
 }

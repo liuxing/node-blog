@@ -60,3 +60,10 @@
   margin-top: 20px;
 }
 
+.notifications {
+  position: fixed;
+  top: 60px;
+  width: 300px;
+  right: 20px;
+  z-index: 999;
+}

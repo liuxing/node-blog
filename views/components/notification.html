@@ -1,0 +1,13 @@
+{% if ctx.flash %}
+<div class="notifications">
+    {% if ctx.flash.success %}
+    <div class="notification is-success">
+        {{ctx.flash.success}}
+    </div>
+    {% elif  ctx.flash.warning %}
+    <div class="notification is-warning">
+        {{ctx.flash.warning}}
+    </div>
+    {% endif %}
+</div>
+{% endif %}
