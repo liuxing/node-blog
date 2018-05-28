@@ -20,9 +20,9 @@ module.exports = (app) => {
   router.get('/posts/new', isLoginUser, require('./posts').create)
   router.post('/posts/new', isLoginUser, require('./posts').create)
   router.get('/posts/:id', require('./posts').show)
-  router.get('/posts/:id/edit', require('./posts').edit)
-  router.post('/posts/:id/edit', require('./posts').edit)
-  router.get('/posts/:id/delete', require('./posts').destroy)
+  router.get('/posts/:id/edit', isLoginUser, require('./posts').edit)
+  router.post('/posts/:id/edit', isLoginUser, require('./posts').edit)
+  router.get('/posts/:id/delete', isLoginUser, require('./posts').destroy)
 
   app
     .use(router.routes())
