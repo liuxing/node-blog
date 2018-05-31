@@ -71,3 +71,8 @@
 .comment:hover .is-invisible{
   visibility: visible !important;
 }
+
+.page-404{
+  height: 100vh;
+  overflow: hidden;
+}

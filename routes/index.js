@@ -29,4 +29,6 @@ module.exports = (app) => {
   app
     .use(router.routes())
     .use(router.allowedMethods())
+
+  app.use(require('../middlewares/notfound_handler')())
 }

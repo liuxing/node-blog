@@ -6,6 +6,7 @@ const session = require('koa-session')
 const bodyParser = require('koa-bodyparser')
 const mongoose = require('mongoose')
 const marked = require('marked')
+const error = require('./middlewares/error_handler')
 const flash = require('./middlewares/flash')
 const router = require('./routes')
 const CONFIG = require('./config/config')
@@ -22,6 +23,7 @@ marked.setOptions({
 })
 
 const app = new Koa()
+app.use(error())
 
 mongoose.connect(CONFIG.mongodb)
 
