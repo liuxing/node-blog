@@ -56,7 +56,6 @@ module.exports = {
     if (!post) {
       throw new Error('文章不存在')
     }
-    console.log(post.author, ctx.session.user._id)
     if (post.author.toString() !== ctx.session.user._id.toString()) {
       throw new Error('没有权限')
     }
