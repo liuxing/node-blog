@@ -22,7 +22,8 @@ marked.setOptions({
   smartypants: false
 })
 
-const app = new Koa()
+const app = module.exports = new Koa()
+
 app.use(error())
 
 mongoose.connect(CONFIG.mongodb)
@@ -54,5 +55,5 @@ app.use(async (ctx, next) => {
 
 router(app)
 
-app.listen(CONFIG.port)
+if (!module.parent) app.listen(CONFIG.port)
 console.log(`server is running at http://localhost:${CONFIG.port}`)
