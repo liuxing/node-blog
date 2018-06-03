@@ -7,6 +7,7 @@ module.exports = function errorHandler () {
       await ctx.render('error', {
         title: ctx.status
       })
+      ctx.app.emit('error', err, ctx)
     }
   }
 }
