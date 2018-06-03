@@ -25,7 +25,7 @@
     var input = $('#editor .input')
     $('#editor .show').html(marked(input.val()))
     input.on('input', function() {
-        $('#editor .show').html(marked($(this).val()))
+        $('#editor .show').html(marked($(this).val(), { sanitize: true }))
     })
 </script>
 {% endblock %}
