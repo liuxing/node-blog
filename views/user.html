@@ -1,0 +1,37 @@
+{% extends 'views/base.html' %}
+{% block body %}
+{% include "views/components/header.html" %}
+<section class="hero is-primary is-bold">
+    <div class="hero-body">
+        <div class="container">
+            <h1 class="title">
+                {{user.name}}
+            </h1>
+            <h2 class="subtitle">
+                {{user.email}}
+            </h2>
+        </div>
+    </div>
+</section>
+<div class="container">
+    <div class="columns">
+        <div class="column is-8 is-offset-2">
+            {% for post in posts %}
+            <div class="card margin-top">
+                <div class="card-content">
+                    <div class="content">
+                        <a href="/posts/{{post._id}}">{{post.title}}</a>
+                    </div>
+                </div>
+                {% if post.author._id == ctx.session.user._id %}
+                <footer class="card-footer">
+                    <a href="/posts/{{post._id}}/edit" class="card-footer-item">Edit</a>
+                    <a href="/posts/{{post._id}}/delete" class="card-footer-item">Delete</a>
+                </footer>
+                {% endif %}
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}

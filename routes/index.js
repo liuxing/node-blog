@@ -12,6 +12,7 @@ async function isLoginUser (ctx, next) {
 module.exports = (app) => {
   router.get('/', require('./home').index)
   router.get('/about', require('./about').index)
+  router.get('/user/:username', require('./user').index)
   router.get('/signup', require('./user').signup)
   router.post('/signup', require('./user').signup)
   router.get('/signin', require('./user').signin)
