@@ -5,7 +5,8 @@ module.exports = function errorHandler () {
     } catch (err) {
       ctx.status = err.statusCode || err.status || 500
       await ctx.render('error', {
-        title: ctx.status
+        title: ctx.status,
+        msg: err.message
       })
       ctx.app.emit('error', err, ctx)
     }
