@@ -30,5 +30,10 @@ module.exports = (app) => {
     .use(router.routes())
     .use(router.allowedMethods())
 
-  app.use(require('../middlewares/notfound_handler')())
+  // 404
+  app.use(async (ctx, next) => {
+    await ctx.render('404', {
+      title: 'page not find'
+    })
+  })
 }
