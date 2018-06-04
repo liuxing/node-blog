@@ -19,7 +19,9 @@
     <div class="media-content">
         <div class="content">
             <p>
-                <strong>{{comment.from.name}}</strong>
+                <a href="/user/{{comment.from.name}}">
+                    <strong>{{comment.from.name}}</strong>
+                </a>
                 <small>31m</small>
                 <br>
                 {{marked(comment.content) | safe}}

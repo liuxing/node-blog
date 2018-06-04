@@ -7,7 +7,7 @@
             <div class="box markdown-body">
                 <h1>{{post.title}}</h1>
                 <div>
-                    作者：<a href="/user/{{post.author._id}}">{{post.author.name}}</a>
+                    作者：<a href="/user/{{post.author.name}}">{{post.author.name}}</a>
                     {% if post.author._id == ctx.session.user._id %}
                     <div class="is-pulled-right">
                         <a class="button is-small is-primary" href="/posts/{{post._id}}/edit">编辑</a>
