@@ -27,6 +27,10 @@ module.exports = (app) => {
   router.get('/posts/:id/delete', isLoginUser, require('./posts').destroy)
   router.post('/comments/new', isLoginUser, require('./comments').create)
   router.get('/comments/:id/delete', isLoginUser, require('./comments').destroy)
+  router.get('/category', require('./category').list)
+  router.get('/category/new', require('./category').create)
+  router.post('/category/new', require('./category').create)
+  router.get('/category/:id/delete', require('./category').destroy)
 
   app
     .use(router.routes())

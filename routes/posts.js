@@ -1,5 +1,6 @@
 const PostModel = require('../models/post')
 const CommentModel = require('../models/comment')
+const CategoryModel = require('../models/category')
 
 module.exports = {
   async index (ctx, next) {
@@ -24,8 +25,10 @@ module.exports = {
 
   async create (ctx, next) {
     if (ctx.method === 'GET') {
+      const categories = await CategoryModel.find({})
       await ctx.render('create', {
-        title: '新建文章'
+        title: '新建文章',
+        categories
       })
       return
     }

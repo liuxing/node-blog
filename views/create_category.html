@@ -1,0 +1,31 @@
+{% extends 'views/base.html' %}
+{% block body %}
+{% include "views/components/header.html" %}
+<div class="container margin-top">
+    <div class="columns">
+        <div class="column is-8 is-offset-2">
+            <form action="/category/new" method="POST">
+                <div class="field">
+                    <label class="label">分类名</label>
+                    <div class="control">
+                        <input name="name" class="input" type="text" placeholder="frontend">
+                    </div>
+                </div>
+                <div class="field">
+                    <label class="label">分类标题</label>
+                    <div class="control">
+                        <input name="title" class="input" type="text" placeholder="前端">
+                    </div>
+                </div>
+                <div class="field">
+                    <label class="label">描述</label>
+                    <div class="control">
+                        <textarea name="desc" class="textarea" placeholder="Textarea"></textarea>
+                    </div>
+                </div>
+                <button class="button is-primary">新建分类</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

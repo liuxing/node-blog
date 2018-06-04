@@ -1,0 +1,31 @@
+{% extends 'views/base.html' %}
+{% block body %}
+{% include "views/components/header.html" %}
+<div class="container margin-top">
+    <div class="columns">
+        <div class="column is-8 is-offset-2">
+            <a href="/category/new" class="button is-small is-primary">新建分类</a>
+            <table class="table margin-top is-bordered is-striped is-narrow is-hoverable is-fullwidth">
+                <thead>
+                    <tr>
+                        <th>name</th>
+                        <th>分类名</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for category in categories %}
+                    <tr>
+                        <td>{{category.name}}</td>
+                        <td>{{category.title}}</td>
+                        <td>
+                            <a href="/category/{{category._id}}/delete" class="button is-small is-danger">删除</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

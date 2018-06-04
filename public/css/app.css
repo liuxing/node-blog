@@ -53,7 +53,8 @@
 .editor-header .right-box {
   margin-left: 200px;
   justify-content: flex-end;
-  padding: 0 20px
+  padding: 0 20px;
+  display: flex;
 }
 
 .margin-top {

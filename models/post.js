@@ -15,6 +15,10 @@ const PostSchema = new Schema({
     type: String,
     required: true
   },
+  category: {
+    type: Schema.Types.ObjectId,
+    ref: 'Category'
+  },
   pv: {
     type: Number,
     default: 0

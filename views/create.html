@@ -4,6 +4,14 @@
     <header class="editor-header">
         <input name="title" class="input is-shadowless is-radiusless"  autofocus="autofocus" type="text" placeholder="输入文章标题...">
         <div class="right-box">
+            <div class="select is-small">
+                <select name="category">
+                    <option disabled="disabled">分类</option>
+                    {% for category in categories %}
+                    <option value={{category._id}}>{{category.title}}</option>
+                    {% endfor %}
+                </select>
+            </div>
             <button type="submit" class="button is-small is-primary">发布</button>
         </div>
     </header>
