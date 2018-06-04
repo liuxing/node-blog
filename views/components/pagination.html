@@ -1,0 +1,48 @@
+{%  if pageCount != 1 %}
+<nav class="pagination is-small margin-top" role="navigation" aria-label="pagination">
+    {# 上一页 #}
+    {% if currentPage == 1 %}
+    <a class="pagination-previous">Previous</a>
+    {% else %}
+    <a href="/posts?page={{currentPage - 1}}" class="pagination-previous">Previous</a>
+    {% endif %}
+    {# 下一页 #}
+    {% if currentPage == pageCount %}
+    <a class="pagination-previous">Next page</a>
+    {% else %}
+    <a href="/posts?page={{currentPage + 1}}" class="pagination-next">Next page</a>
+    {% endif %}
+
+    <ul class="pagination-list">
+        {# 第一页 #}
+        {% if currentPage == 1 %}
+        <li><a href="/posts" class="pagination-link is-current" aria-label="Goto page 1">1</a></li>
+        {% else %}
+        <li><a href="/posts" class="pagination-link" aria-label="Goto page 1">1</a></li>
+        {% endif %}
+
+        {% if pageStart > 1 %}
+        <li><span class="pagination-ellipsis">&hellip;</span></li>
+        {% endif %}
+        {# 页码 #}
+        {% for i in range(pageStart + 1, pageEnd) %}
+            {% if i == currentPage  %}
+            <li><a class="pagination-link is-current" aria-label="Goto page {{i}}">{{i}}</a></li>
+            {% else %}
+            <li><a href="/posts?page={{i}}" class="pagination-link" aria-label="Goto page {{i+1}}">{{i}}</a></li>
+            {% endif %}
+        {% endfor %}
+        {% if pageEnd < pageCount %}
+        <li><span class="pagination-ellipsis">&hellip;</span></li>
+        {% endif %}
+        {# 最后一页 #}
+        {% if currentPage == pageCount%}
+        <li><a href="/posts?page={{pageCount}}" class="pagination-link is-current" aria-label="Goto page {{pageCount}}">{{pageCount}}</a></li>
+        {% else %}
+        <li><a href="/posts?page={{pageCount}}" class="pagination-link" aria-label="Goto page {{pageCount}}">{{pageCount}}</a></li>
+        {% endif %}
+    </ul>
+</nav>
+{% else %}
+<p class="has-text-centered margin-top is-size-7 has-text-grey">没有更多了... </p>
+{% endif %}

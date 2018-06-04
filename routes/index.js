@@ -10,7 +10,7 @@ async function isLoginUser (ctx, next) {
 }
 
 module.exports = (app) => {
-  router.get('/', require('./home').index)
+  router.get('/', require('./posts').index)
   router.get('/about', require('./about').index)
   router.get('/user/:username', require('./user').index)
   router.get('/signup', require('./user').signup)
@@ -20,6 +20,7 @@ module.exports = (app) => {
   router.get('/signout', require('./user').signout)
   router.get('/posts/new', isLoginUser, require('./posts').create)
   router.post('/posts/new', isLoginUser, require('./posts').create)
+  router.get('/posts', require('./posts').index)
   router.get('/posts/:id', require('./posts').show)
   router.get('/posts/:id/edit', isLoginUser, require('./posts').edit)
   router.post('/posts/:id/edit', isLoginUser, require('./posts').edit)

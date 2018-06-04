@@ -2,6 +2,26 @@ const PostModel = require('../models/post')
 const CommentModel = require('../models/comment')
 
 module.exports = {
+  async index (ctx, next) {
+    const pageSize = 5
+    const currentPage = parseInt(ctx.query.page) || 1
+    const allPostsCount = await PostModel.count()
+    const pageCount = Math.ceil(allPostsCount / pageSize)
+    const pageStart = currentPage - 2 > 0 ? currentPage - 2 : 1
+    const pageEnd = pageStart + 4 >= pageCount ? pageCount : pageStart + 4
+    const posts = await PostModel.find({}).skip((currentPage - 1) * pageSize).limit(pageSize)
+    await ctx.render('index', {
+      title: 'JS之禅',
+      posts,
+      pageSize,
+      currentPage,
+      allPostsCount,
+      pageCount,
+      pageStart,
+      pageEnd
+    })
+  },
+
   async create (ctx, next) {
     if (ctx.method === 'GET') {
       await ctx.render('create', {
