@@ -26,6 +26,7 @@ module.exports = {
       ctx.session.user = {
         _id: user._id,
         name: user.name,
+        isAdmin: user.isAdmin,
         email: user.email
       }
       ctx.flash = { success: '登录成功' }

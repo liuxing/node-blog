@@ -14,12 +14,14 @@
                 <a class="navbar-item" href="/about">关于</a>
             </div>
             <div class="navbar-end">
+                {% if ctx.session.user.isAdmin %}
+                <div class="navbar-item">
+                    <a class="button is-small is-primary" href="/category">分类</a>
+                </div>
+                {% endif %}
                 {% if ctx.session.user %}
                 <div class="navbar-item">
                     <a class="button is-small is-primary" href="/posts/new">写文章</a>
-                </div>
-                <div class="navbar-item">
-                    <a class="button is-small is-primary" href="/category">分类</a>
                 </div>
                 <div class="navbar-item">
                     <a href="/user/{{ctx.session.user.name}}">{{ctx.session.user.name}}</a>
