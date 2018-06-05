@@ -1,4 +1,4 @@
-{%  if 1 < pageCount and pageCount > currentPage  %}
+{%  if 1 < pageCount and pageCount >= currentPage  %}
 <nav class="pagination is-small margin-top" role="navigation" aria-label="pagination">
     {# 上一页 #}
     {% if currentPage == 1 %}
