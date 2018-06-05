@@ -4,6 +4,14 @@
     <header class="editor-header">
         <input name="title" value={{post.title}} class="input is-shadowless is-radiusless" type="text" placeholder="输入文章标题...">
         <div class="right-box">
+            <div class="select is-small">
+                <select name="category">
+                    <option disabled="disabled">分类</option>
+                    {% for category in categories %}
+                    <option value={{category._id}}>{{category.title}}</option>
+                    {% endfor %}
+                </select>
+            </div>
             <button type="submit" class="button is-small is-primary">更新</button>
         </div>
     </header>

@@ -16,6 +16,9 @@
                     {% endif %}
                 </div>
                 {{marked(post.content) | safe}}
+                <p>
+                    <a  href="/posts?c={{post.category.name}}" class="tag is-primary">{{post.category.title}}</a>
+                </p>
             </div>
             <section class="margin-top box">
                 {% include "views/components/comments.html" %}
