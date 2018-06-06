@@ -25,11 +25,11 @@
 
 [3.1 开发前的项目配置](https://github.com/liuxing/abc-blog/tree/master/docs/3.1开发前的项目配置.md)
 
-- [#规划项目目录结构](https://github.com/liuxing/abc-blog/tree/master/docs/3.2把项目跑起来.md#规划项目目录结构)
-- [使用editorconfig](https://github.com/liuxing/abc-blog/tree/master/docs/3.2把项目跑起来.md#使用editorconfig)
-- [使用commitizen](https://github.com/liuxing/abc-blog/tree/master/docs/3.2把项目跑起来.md#使用commitizen)
-- [使用eslint](https://github.com/liuxing/abc-blog/tree/master/docs/3.2把项目跑起来.md#使用eslint)
-- [使用Git hooks自动检查代码](https://github.com/liuxing/abc-blog/tree/master/docs/3.2把项目跑起来.md#使用git-hooks自动检查代码)
+- [规划项目目录结构](https://github.com/liuxing/abc-blog/tree/master/docs/3.1开发前的项目配置.md#规划项目目录结构)
+- [使用editorconfig](https://github.com/liuxing/abc-blog/tree/master/docs/3.1开发前的项目配置.md#使用editorconfig)
+- [使用commitizen](https://github.com/liuxing/abc-blog/tree/master/docs/3.1开发前的项目配置.md#使用commitizen)
+- [使用eslint](https://github.com/liuxing/abc-blog/tree/master/docs/3.1开发前的项目配置.md#使用eslint)
+- [使用Git hooks自动检查代码](https://github.com/liuxing/abc-blog/tree/master/docs/3.1开发前的项目配置.md#使用git-hooks自动检查代码)
 
 [3.2 把项目跑起来](https://github.com/liuxing/abc-blog/tree/master/docs/3.2把项目跑起来.md)
 
@@ -54,8 +54,6 @@
 
 - [koa2 中间件机制](https://github.com/liuxing/abc-blog/blob/master/docs/3.5koa2中间件开发.md#koa2-中间件机制)
 
-- [koa2 中间件机制](https://github.com/liuxing/abc-blog/blob/master/docs/3.5koa2中间件开发.md#koa2-中间件机制)
-
 - [消息闪现中间件](https://github.com/liuxing/abc-blog/blob/master/docs/3.5koa2中间件开发.md#消息闪现中间件)
 
 [3.6 文章增删改查](https://github.com/liuxing/abc-blog/blob/master/docs/3.6文章增删改查.md)
@@ -67,12 +65,34 @@
 
 [3.7 用户权限控制](https://github.com/liuxing/abc-blog/blob/master/docs/3.7用户权限控制.md)
 
+- [登录状态检查](https://github.com/liuxing/abc-blog/blob/master/docs/3.7用户权限控制.md#登录状态检查)
+- [管理权限控制](https://github.com/liuxing/abc-blog/blob/master/docs/3.7用户权限控制.md#管理权限控制)
+
 [3.8 评论功能](https://github.com/liuxing/abc-blog/blob/master/docs/3.8评论功能.md)
 
 - [设计评论的模型](https://github.com/liuxing/abc-blog/blob/master/docs/3.8评论功能.md#设计评论的模型)
 - [发布留言](https://github.com/liuxing/abc-blog/blob/master/docs/3.8评论功能.md#发布留言)
 - [显示留言](https://github.com/liuxing/abc-blog/blob/master/docs/3.8评论功能.md#发布留言)
 - [删除留言](https://github.com/liuxing/abc-blog/blob/master/docs/3.8评论功能.md#删除留言)
+
+[3.9 一些安全问题](https://github.com/liuxing/abc-blog/blob/master/docs/3.9一些安全问题.md)
+
+- [XSS的防范](https://github.com/liuxing/abc-blog/blob/master/docs/3.9一些安全问题.md#xss的防范)
+- [CSRF的防范](https://github.com/liuxing/abc-blog/blob/master/docs/3.9一些安全问题.md#csrf-的防范)
+
+[3.10 分类管理](https://github.com/liuxing/abc-blog/blob/master/docs/3.10文章分类.md)
+
+- [分类模型](https://github.com/liuxing/abc-blog/blob/master/docs/3.10文章分类.md#分类模型设计)
+- [分类管理主页](https://github.com/liuxing/abc-blog/blob/master/docs/3.10文章分类.md#分类管理主页)
+- [新增与删除](https://github.com/liuxing/abc-blog/blob/master/docs/3.10文章分类.md#新增分类)
+
+[3.11 分页功能](https://github.com/liuxing/abc-blog/blob/master/docs/3.11分页功能.md)
+
+- [MongoDB分页原理](https://github.com/liuxing/abc-blog/blob/master/docs/3.11分页功能.md#mongodb-实现分页原理)
+- [实现一个基本的分页器](https://github.com/liuxing/abc-blog/blob/master/docs/3.11分页功能.md#实现一个基本的分页器)
+- [高级一点儿的分页器](https://github.com/liuxing/abc-blog/blob/master/docs/3.11分页功能.md#高级一点儿的分页器)
+
+[3.12 koa2错误处理及404](https://github.com/liuxing/abc-blog/blob/master/docs/3.12koa2错误处理及404.md)
 
 ## License
 
