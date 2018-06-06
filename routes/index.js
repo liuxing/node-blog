@@ -30,7 +30,7 @@ module.exports = (app) => {
   router.post('/signup', require('./user').signup)
   router.get('/signin', require('./user').signin)
   router.post('/signin', require('./user').signin)
-  router.get('/signout', require('./user').signout)
+  router.get('/signout', isLoginUser, require('./user').signout)
   router.get('/posts/new', isLoginUser, require('./posts').create)
   router.post('/posts/new', isLoginUser, require('./posts').create)
   router.get('/posts', require('./posts').index)

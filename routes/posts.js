@@ -11,6 +11,9 @@ module.exports = {
     let cid
     if (cname) {
       const cateogry = await CategoryModel.findOne({ name: cname })
+      if (!cateogry) {
+        ctx.throw(404, '该分类不存在')
+      }
       cid = cateogry._id
     }
     const query = cid ? { category: cid } : {}
@@ -18,7 +21,7 @@ module.exports = {
     const pageCount = Math.ceil(allPostsCount / pageSize)
     const pageStart = currentPage - 2 > 0 ? currentPage - 2 : 1
     const pageEnd = pageStart + 4 >= pageCount ? pageCount : pageStart + 4
-    const posts = await PostModel.find(query).skip((currentPage - 1) * pageSize).limit(pageSize)
+    const posts = await PostModel.find(query).sort({ _id: -1 }).skip((currentPage - 1) * pageSize).limit(pageSize)
     const baseUrl = cname ? `${ctx.path}?c=${cname}&page=` : `${ctx.path}?page=`
     await ctx.render('index', {
       title: 'JS之禅',
@@ -42,6 +45,18 @@ module.exports = {
       })
       return
     }
+    const { title, content } = ctx.request.body
+    let errMsg = ''
+    if (title === '') {
+      errMsg = '标题不能是空的'
+    } else if (content === '') {
+      errMsg = '内容不可为空'
+    }
+    if (errMsg) {
+      ctx.flash = { warning: errMsg }
+      ctx.redirect('back')
+      return
+    }
     const post = Object.assign(ctx.request.body, {
       author: ctx.session.user._id
     })
@@ -50,12 +65,19 @@ module.exports = {
     ctx.redirect(`/posts/${res._id}`)
   },
   async show (ctx, next) {
-    const post = await PostModel.findById(ctx.params.id)
+    const postId = ctx.params.id
+    if (postId.length !== 24) {
+      ctx.throw(404, '此主题不存在或已被删除')
+    }
+    const post = await PostModel.findById(postId)
       .populate([
         { path: 'author', select: 'name' },
         { path: 'category', select: ['title', 'name'] }
       ])
-    const comments = await CommentModel.find({ postId: ctx.params.id })
+    if (!post) {
+      ctx.throw(404, '此主题不存在或已被删除')
+    }
+    const comments = await CommentModel.find({ postId })
       .populate({ path: 'from', select: 'name' })
     await ctx.render('post', {
       title: post.title,
@@ -65,14 +87,18 @@ module.exports = {
   },
 
   async edit (ctx, next) {
+    const postId = ctx.params.id
     if (ctx.method === 'GET') {
-      const post = await PostModel.findById(ctx.params.id)
+      if (postId.length !== 24) {
+        ctx.throw(404, '此主题不存在或已被删除')
+      }
+      const post = await PostModel.findById(postId)
       const categories = await CategoryModel.find({})
       if (!post) {
-        throw new Error('文章不存在')
+        ctx.throw(404, '此主题不存在或已被删除')
       }
       if (post.author.toString() !== ctx.session.user._id.toString()) {
-        throw new Error('没有权限')
+        ctx.throw(401, '没有权限')
       }
       await ctx.render('edit', {
         title: '更新文章',
@@ -82,7 +108,18 @@ module.exports = {
       return
     }
     const { title, content, category } = ctx.request.body
-    await PostModel.findByIdAndUpdate(ctx.params.id, {
+    let errMsg = ''
+    if (title === '') {
+      errMsg = '标题不能是空的'
+    } else if (content === '') {
+      errMsg = '内容不可为空'
+    }
+    if (errMsg) {
+      ctx.flash = { warning: errMsg }
+      ctx.redirect('back')
+      return
+    }
+    await PostModel.findByIdAndUpdate(postId, {
       title,
       content,
       category
@@ -91,12 +128,16 @@ module.exports = {
     ctx.redirect(`/posts/${ctx.params.id}`)
   },
   async destroy (ctx, next) {
-    const post = await PostModel.findById(ctx.params.id)
+    const postId = ctx.params.id
+    if (postId.length !== 24) {
+      ctx.throw(404, '此主题不存在或已被删除')
+    }
+    const post = await PostModel.findById(postId)
     if (!post) {
-      throw new Error('文章不存在')
+      ctx.throw(404, '此主题不存在或已被删除')
     }
     if (post.author.toString() !== ctx.session.user._id.toString()) {
-      throw new Error('没有权限')
+      ctx.throw(401, '没有权限')
     }
     await PostModel.findByIdAndRemove(ctx.params.id)
     ctx.flash = { success: '删除文章成功' }

@@ -14,6 +14,11 @@ module.exports = {
   },
 
   async signin (ctx, next) {
+    if (ctx.session.user) {
+      ctx.flash = { warning: '已登录' }
+      ctx.redirect('back')
+      return
+    }
     if (ctx.method === 'GET') {
       await ctx.render('signin', {
         title: '用户登录'
@@ -32,7 +37,8 @@ module.exports = {
       ctx.flash = { success: '登录成功' }
       ctx.redirect('/')
     } else {
-      ctx.body = '用户名或密码错误'
+      ctx.flash = { warning: '用户名或密码错误' }
+      ctx.redirect('back')
     }
   },
 
@@ -44,16 +50,38 @@ module.exports = {
       return
     }
     const salt = await bcrypt.genSalt(10)
-    let { name, email, password } = ctx.request.body
-    // TODO 合法性校验
+    let { name, email, password, repassword } = ctx.request.body
+    let errMsg = ''
+    if (name === '') {
+      errMsg = '用户名不能为空'
+    } else if (email === '') {
+      errMsg = 'email不能为空'
+    } else if (password === '') {
+      errMsg = '密码不能为空'
+    } else if (password !== repassword) {
+      errMsg = '两次密码不一样'
+    }
+    if (errMsg) {
+      ctx.flash = { warning: errMsg }
+      ctx.redirect('back')
+      return
+    }
     password = await bcrypt.hash(password, salt)
     const user = {
       name,
       email,
       password
     }
-    const result = await UserModel.create(user)
-    ctx.body = result
+    try {
+      const result = await UserModel.create(user)
+      ctx.body = result
+    } catch (err) {
+      console.log(err)
+      if (err.message.match('duplicate key')) {
+        ctx.flash = { warning: '用户名已存在' }
+      }
+      return ctx.redirect('back')
+    }
   },
 
   signout (ctx, next) {
