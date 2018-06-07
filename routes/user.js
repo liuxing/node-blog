@@ -76,7 +76,6 @@ module.exports = {
       const result = await UserModel.create(user)
       ctx.body = result
     } catch (err) {
-      console.log(err)
       if (err.message.match('duplicate key')) {
         ctx.flash = { warning: '用户名已存在' }
       }

@@ -4,7 +4,6 @@ const CategoryModel = require('../models/category')
 
 module.exports = {
   async index (ctx, next) {
-    console.log(ctx.session.user)
     const pageSize = 5
     const currentPage = parseInt(ctx.query.page) || 1
     const cname = ctx.query.c

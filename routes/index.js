@@ -1,7 +1,6 @@
 const router = require('koa-router')()
 
 async function isLoginUser (ctx, next) {
-  console.log(ctx.session)
   if (!ctx.session.user) {
     ctx.flash = { warning: '未登录, 请先登录' }
     return ctx.redirect('/signin')
@@ -10,7 +9,6 @@ async function isLoginUser (ctx, next) {
 }
 
 async function isAdmin (ctx, next) {
-  console.log(ctx.session)
   if (!ctx.session.user) {
     ctx.flash = { warning: '未登录, 请先登录' }
     return ctx.redirect('/signin')
