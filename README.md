@@ -1,4 +1,4 @@
-# abc-blog [![License](https://img.shields.io/github/license/liuxing/abc-blog.svg)](https://github.com/liuxing/abc-blog/blob/master/LICENSE) [![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg) ](http://standardjs.com)  
+# node-blog [![License](https://img.shields.io/github/license/liuxing/abc-blog.svg)](https://github.com/liuxing/abc-blog/blob/master/LICENSE) [![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg) ](http://standardjs.com)  
 《Node.js从入门到上线》—— Koa2 + MongoDB 搭建博客系统
 
 ## Table of contents
