@@ -1,7 +1,12 @@
-# node-blog [![License](https://img.shields.io/github/license/liuxing/abc-blog.svg)](https://github.com/liuxing/abc-blog/blob/master/LICENSE) [![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg) ](http://standardjs.com)  
-《Node.js从入门到上线》—— Koa2 + MongoDB 搭建博客系统
+# node-blog  
+
+[![License](https://img.shields.io/github/license/liuxing/abc-blog.svg)](https://github.com/liuxing/abc-blog/blob/master/LICENSE) [![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg) ](http://standardjs.com)  
+
+> 《Node.js从入门到上线》—— Koa2 + MongoDB 搭建博客系统
 
 ## Table of contents
+
+### 入门篇
 
 [1.1  Node.js 的安装与配置](https://github.com/liuxing/abc-blog/tree/master/docs/1.1Node.js的安装与配置.md)
 
@@ -93,6 +98,18 @@
 - [高级一点儿的分页器](https://github.com/liuxing/abc-blog/blob/master/docs/3.11分页功能.md#高级一点儿的分页器)
 
 [3.12 koa2错误处理及404](https://github.com/liuxing/abc-blog/blob/master/docs/3.12koa2错误处理及404.md)
+
+- [ ] 3.13 测试
+- [ ] 3.14 持续集成
+
+### 上线篇
+
+[4.1 域名与服务器](https://github.com/liuxing/abc-blog/blob/master/docs/4.1域名与服务器.md)
+
+- [IP与域名](https://github.com/liuxing/abc-blog/blob/master/docs/4.1域名与服务器.md#IP与域名)
+- [域名与服务器选购](https://github.com/liuxing/abc-blog/blob/master/docs/4.1域名与服务器.md#域名选购)
+- [连接服务器](https://github.com/liuxing/abc-blog/blob/master/docs/4.1域名与服务器.md#连接服务器)
+- [域名解析](https://github.com/liuxing/abc-blog/blob/master/docs/4.1域名与服务器.md#域名解析)
 
 ## License
 
