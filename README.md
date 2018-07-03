@@ -4,6 +4,28 @@
 
 > 《Node.js从入门到上线》—— Koa2 + MongoDB 搭建博客系统
 
+
+
+### 脚手架工具[![npm](https://img.shields.io/npm/v/koa2-starter.svg)](https://www.npmjs.com/package/koa2-starter) 
+
+之前一个同学说，要新建这么多文件好麻烦。所以写了个脚手架工具： [koa2-starter-cli](https://github.com/liuxing/koa2-starter-cli) 可通过命令行接口自定义模板引擎以及ESLint，同时包含了nodemon、husky、lint-staged、commitizen之类的辅助工具。*(目录结构与本教程略微有不同)*
+
+使用方式：
+
+```bash
+# 下载脚手架工具
+$ npm install -g koa2-starter
+# 生成项目
+$ koa2 init <project-name>
+# 进入项目
+$ cd <project-name>
+$ git init
+$ npm install
+$ npm run dev
+```
+
+更多详细：[koa2-starter-cli](https://github.com/liuxing/koa2-starter-cli) 
+
 ## Table of contents
 
 ### 入门篇
